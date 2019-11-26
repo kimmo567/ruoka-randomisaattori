@@ -1,0 +1,41 @@
+<!doctype html>
+<head>
+    <title>Supertieteellinen ruokasuunnitteluohjelmisto</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <button type="button" onclick="heippa()">Arvo päivän ruoka!</button>
+    <p id="ruokaehdotus"></p>
+    <!-- Jokin alue, johon arvottu ruoka kirjoitetaan -->
+    <script>
+
+        function ehdotaRuokaa(ruokaehdotusMerkkijono) {
+            let ruokaehdotusElementti = document.getElementById("ruokaehdotus")
+            ruokaehdotusElementti.innerHTML = ruokaehdotusMerkkijono
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+        let ruokalista = ["lasagne", "Caesar-salaatti", "kanapasta", "hernekeitto", "punajuurisalaatti"]
+
+        let edellinenNumero = -1 // Numero, jota generaattori ei tuottaisi
+
+        //console.log(ruokalista)
+        function heippa() {
+            let randomiNumero = getRandomInt(ruokalista.length) // leikitään, että on 1
+            while (randomiNumero === edellinenNumero) {
+                randomiNumero = getRandomInt(ruokalista.length)
+            }
+            ehdotaRuokaa(ruokalista[randomiNumero])
+            edellinenNumero = randomiNumero
+        }
+
+        // TOIMINNALLISUUDET
+        // ylläpitää listaa erilaisia lemppariruoista
+        // arpoo jonkin ruoan listasta nappia painettaessa
+        // näyttää ruoan käyttöliittymässä
+    </script>
+</body>
+
